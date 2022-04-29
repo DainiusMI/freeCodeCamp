@@ -399,4 +399,12 @@ return userObj.data.friends;
 
 console.log(addFriend(user, 'Pete'));
 
+
+
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
+
+reverseString("hello");
+
 */

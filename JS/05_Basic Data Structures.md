@@ -282,4 +282,3 @@ Take a look at the object we've provided in the code editor. The user object con
   }
 
   console.log(addFriend(user, 'Pete'));
-  ```
