@@ -116,33 +116,52 @@ Repeat a given string str (first argument) for num times (second argument). Retu
 Recursive function with ternary operator.
 
 
-### 
-
+### Truncate a String:
+Truncate a string (first argument) if it is longer than the given maximum string length (second argument). 
+Return the truncated string with a ... ending.
   ```js
+  function truncateString(str, num) {
+    return str.length>num?str.substring(0, num)+'...':str;  \\ should had used slice instead of substring
+  }
 
+  console.log(truncateString("A-tisket a-tasket A green and yellow basket", 8));
   ```
-  ```
 
 
-### 
 
+### Finders Keepers:
+Create a function that looks through an array arr and returns the first element in it that passes a 'truth test'. This means that given an element x, the 'truth test' is passed if func(x) is true. If no element passes the test, return undefined.
   ```js
-
+  function findElement(arr, func) {
+    return arr.find(func);
+  }
+  console.log(findElement([1, 2, 3, 4], num => num % 2 === 0));
   ```
 
 
-### 
-
+### Boo who:
+Check if a value is classified as a boolean primitive. Return true or false.
+Boolean primitives are true and false.
   ```js
-
+    function booWho(bool) {
+        return typeof bool==='boolean';
+    }
+    console.log(booWho(5));
   ```
-  ```
 
 
-### 
-
+### Title Case a Sentence:
+Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
+For the purpose of this exercise, you should also capitalize connecting words like the and of.
   ```js
-
+  function titleCase(str) {
+    let arr = str.split(' ');
+    for (let i=0; i< arr.length; i++){
+      let word = arr[i].toLowerCase();
+      arr[i] = word.charAt(0).toUpperCase() + word.slice(1);
+    }
+    return arr.join(' ');
+  }
   ```
 
 

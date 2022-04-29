@@ -458,8 +458,6 @@ function confirmEnding(str, target) {
 console.log(confirmEnding("Bastian", "an"));
 
 
-*/
-
 
 function repeatStringNumTimes(str, num) {
   let result = '';
@@ -470,3 +468,47 @@ function repeatStringNumTimes(str, num) {
 }
 
 console.log(repeatStringNumTimes("abc", 3));
+
+
+
+
+function truncateString(str, num) {
+  return str.length>num?str.substring(0, num)+'...':str;
+}
+
+console.log(truncateString("A-tisket a-tasket A green and yellow basket", 8));
+
+
+
+function findElement(arr, func) {
+  let num = 0;
+  let i=0;
+    do {
+      arr[i]%2==0?num=arr[i]:i++;;
+    }while (num == 0 && i < 4)
+  return num;
+}
+
+function findElement(arr, func) {
+  return arr.find(func);
+}
+console.log(findElement([1, 5, 3, 7], num => num % 2 === 0));
+
+
+function booWho(bool) {
+    return typeof bool==='boolean';
+}
+console.log(booWho(5));
+*/
+
+
+function titleCase(str) {
+  let arr = str.split(' ');
+  for (let i=0; i< arr.length; i++){
+    let word = arr[i].toLowerCase();
+    arr[i] = word.charAt(0).toUpperCase() + word.slice(1);
+  }
+  return arr.join(' ');
+}
+
+console.log(titleCase("I'm a little tea pot"));
