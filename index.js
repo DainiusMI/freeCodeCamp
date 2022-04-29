@@ -288,4 +288,57 @@ function zeroArray(m, n) {
 let matrix = zeroArray(3, 2);
 console.log(matrix);
 
+
+function zeroArray(m, n) {
+  let newArray = [ ];
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      newArray[j][i]=0;
+      }
+  }
+  return newArray;
+}
+
+
+function mixedNumbers(arr) {
+  // Only change code below this line
+arr.unshift(7, 'VIII', 9);
+arr.push('I', 2, 'three');
+  // Only change code above this line
+  return arr;
+}
+
+console.log(mixedNumbers(['IV', 5, 'six']));
+
+
+function copyMachine(arr, num) {
+  let newArr = [];
+  while (num >= 1) {
+    // Only change code below this line
+    newArr.push([...arr]);
+    // Only change code above this line
+    num--;
+  }
+  return newArr;
+}
+
+console.log(copyMachine([true, false, true], 2));
+
+
+
+function filteredArray(arr, elem) {
+  let newArr = [];
+  // Only change code below this line
+  for (let i=0; i < arr.length; i++){
+    if (arr[i].includes(elem) == false){
+      newArr.push(arr[i]);
+    }
+  }
+  // Only change code above this line
+  return newArr;
+}
+
+console.log(filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3));
+
 */
+
