@@ -407,4 +407,66 @@ function reverseString(str) {
 
 reverseString("hello");
 
+
+let result = 1;
+function factorialize(num) {
+  if (num == 0){
+    return 1;
+  }
+  return factorialize(num-1) * num;
+}
+
+console.log(factorialize(5));
+console.log(factorialize(10));
+
+
+function findLongestWordLength(str) {
+  let longest = 0;
+  let arr = str.split(' ');
+  for (let i = 0; i < arr.length; i++){
+    if (arr[i].length > longest){
+      longest = arr[i].length;
+    }
+  }
+  return longest;
+}
+
+function findLongestWordLength(str) {
+  return Math.max(...str.split(' ').map(word => word.length));
+}
+
+console.log(findLongestWordLength("The quick brown fox jumped over the lazy dog"))
+findLongestWordLength("The quick brown fox jumped over the lazy dog");
+
+function largestOfFour(arr) {
+  let result = [];
+  for (let i = 0; i < arr.length; i++){
+    result.push(Math.max(...arr[i]));
+  }
+  console.log(result);
+  return result;
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+largestOfFour([[4, 9, 1, 3], [13, 35, 18, 26], [32, 35, 97, 39], [1000000, 1001, 857, 1]])
+
+
+
+function confirmEnding(str, target) {
+  return str.substring(str.length-target.length)===target?true:false;
+}
+console.log(confirmEnding("Bastian", "an"));
+
+
 */
+
+
+function repeatStringNumTimes(str, num) {
+  let result = '';
+  for (let i =0; i<num; i++){
+    result += str;
+  }
+  return result;
+}
+
+console.log(repeatStringNumTimes("abc", 3));
