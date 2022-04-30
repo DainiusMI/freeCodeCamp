@@ -199,45 +199,81 @@ Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
 Hint: Try converting each value to a Boolean.
   ```js
   function bouncer(arr) {
-    return arr.filter(a => a);
+    return arr.filter(a => a); //   return arr.filter(Boolean);
   }
   console.log(bouncer([9, "ate", "", 7, false]));
   ```
 
 
-### 
+### Where do I Belong:
+Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
 
+For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
+
+Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has been sorted it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
   ```js
-
+  function getIndexToIns(arr, num) {
+    return arr.sort().filter(a => a < num).length; // there was no reason to 'sort()' them from lowest to highest - filtered array was goin to be the smae length anyway
+  }
+  console.log(getIndexToIns([40, 60], 50));
   ```
 
 
-### 
+### Mutations:
+Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
 
+For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+The arguments ["hello", "hey"] should return false because the string hello does not contain a y.
   ```js
+  function mutation(arr) {
+    let charPool = arr[0].toUpperCase().split('');    // split() was not needed
+    let testPool = arr[1].toUpperCase().split('');    // includes() test strings, arrays and objects...
+    for (let i=0; i<testPool.length; i++){
+      if (!charPool.includes(testPool[i])){
+        return false;
+      }
+    }
+    return true;
+  }
+  console.log(mutation(["hello", "hey"]));
 
+
+  function mutation([ target, test ], i = 0) {
+  target = target.toLowerCase();
+  test = test.toLowerCase();
+  return i >= test.length
+    ? true
+    : !target.includes(test[i])
+      ? false
+      : mutation([ target, test ], i + 1);
+  }
   ```
+The cool way to do it. Here he uses recursive function.
 
 
-### 
-
+### Chunky Monkey:
+Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
   ```js
+  let result = [];
+  let step = 0;
+  function chunkArrayInGroups(arr, size, i=0) {
+    if (i >= arr.length) {
+      return result;
+    }
+    else {
+      step += size;
+      result.push(arr.slice(i, step));
+      i += size;
+      chunkArrayInGroups(arr, size, i);
+    }
+    return result;
+  }
 
+  //console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2));
+  console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5], 2));
   ```
+My stupid ass trying to use recursive function
 
-
-### 
-
-  ```js
-
-  ```
-
-
-### 
-
-  ```js
-
-  ```
 
 
 

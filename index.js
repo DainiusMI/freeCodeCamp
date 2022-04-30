@@ -523,8 +523,48 @@ console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1));
 
 
 function bouncer(arr) {
-  return arr.filter(a => a);
+  return arr.filter(Boolean);
 }
 console.log(bouncer([9, "ate", "", 7, false]));
+
+
+
+function getIndexToIns(arr, num) {
+  return arr.sort().filter(a => a < num).length;
+}
+console.log(getIndexToIns([40, 60], 50));
+
+
+function mutation(arr) {
+  let charPool = arr[0].toUpperCase();
+  let testPool = arr[1].toUpperCase();
+  for (let i=0; i<testPool.length; i++){
+    if (!charPool.includes(testPool[i])){
+      return false;
+    }
+  }
+  return true;
+}
+console.log(mutation(["hello", "he"]));
+
+
+let result = [];
+let step = 0;
+function chunkArrayInGroups(arr, size, i=0) {
+  if (i >= arr.length) {
+    return result;
+  }
+  else {
+    step += size;
+    result.push(arr.slice(i, step));
+    i += size;
+    chunkArrayInGroups(arr, size, i);
+  }
+  return result;
+}
+
+//console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2));
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5], 2));
+
 
 */
