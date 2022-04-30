@@ -162,6 +162,26 @@ For the purpose of this exercise, you should also capitalize connecting words li
     }
     return arr.join(' ');
   }
+
+
+  function titleCase(str) {
+  return str.toLowerCase().replace(/(^|\s)\S/g, L => L.toUpperCase());
+  }
+  ```
+  - Lowercase the whole string using str.toLowerCase().
+  - Replace every word’ first character to uppercase using .replace.
+  - Search for character at the beginning of each word i.e. matching any character following a space or matching the first character of the whole string, by using the following pattern.
+  - Regex explanation:  //  /(^|\s)\S/g
+    - Find all non-whitespace characters (\S)
+    - At the beginning of string (^)
+    - Or after any whitespace character (\s)
+    - The g modifier searches for other such word pattern in the whole string and replaces them.
+
+
+### 
+
+  ```js
+
   ```
 
 
