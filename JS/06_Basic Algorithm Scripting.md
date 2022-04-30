@@ -178,6 +178,40 @@ For the purpose of this exercise, you should also capitalize connecting words li
     - The g modifier searches for other such word pattern in the whole string and replaces them.
 
 
+### Slice and Splice:
+You are given two arrays and an index.
+Copy each element of the first array into the second array, in order.
+Begin inserting elements at index n of the second array.
+Return the resulting array. The input arrays should remain the same after the function runs.
+  ```js
+  function frankenSplice(arr1, arr2, n) {
+    //let result = arr2.slice();
+    //return result.splice(n, 0, ...arr1);
+    return arr2.slice(0,n).concat(...arr1).concat(arr2.slice(n));
+  }
+  console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1));
+  ```
+
+
+### Falsy Bouncer:
+Remove all falsy values from an array.
+Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
+Hint: Try converting each value to a Boolean.
+  ```js
+  function bouncer(arr) {
+    return arr.filter(a => a);
+  }
+  console.log(bouncer([9, "ate", "", 7, false]));
+  ```
+
+
+### 
+
+  ```js
+
+  ```
+
+
 ### 
 
   ```js
@@ -191,6 +225,19 @@ For the purpose of this exercise, you should also capitalize connecting words li
 
   ```
 
+
+### 
+
+  ```js
+
+  ```
+
+
+### 
+
+  ```js
+
+  ```
 
 
 

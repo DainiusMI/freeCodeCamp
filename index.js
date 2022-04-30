@@ -499,7 +499,7 @@ function booWho(bool) {
     return typeof bool==='boolean';
 }
 console.log(booWho(5));
-*/
+
 
 
 function titleCase(str) {
@@ -512,3 +512,19 @@ function titleCase(str) {
 }
 
 console.log(titleCase("I'm a little tea pot"));
+
+
+function frankenSplice(arr1, arr2, n) {
+  //let result = arr2.slice();
+  //return result.splice(n, 0, ...arr1);
+  return arr2.slice(0,n).concat(...arr1).concat(arr2.slice(n));
+}
+console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1));
+
+
+function bouncer(arr) {
+  return arr.filter(a => a);
+}
+console.log(bouncer([9, "ate", "", 7, false]));
+
+*/
