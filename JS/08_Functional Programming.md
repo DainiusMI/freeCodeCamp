@@ -92,6 +92,110 @@ So far, we have seen two distinct principles for functional programming:
 Adding one to a number is not very exciting, but we can apply these principles when working with arrays or more complex objects.
 
 
+### Use the map Method to Extract Data from an Array:
+So far we have learned to use pure functions to avoid side effects in a program. Also, we have seen the value in having a function only depend on its input arguments.
+
+This is only the beginning. As its name suggests, functional programming is centered around a theory of functions.
+
+It would make sense to be able to pass them as arguments to other functions, and return a function from another function. Functions are considered first class objects in JavaScript, which means they can be used like any other object. They can be saved in variables, stored in an object, or passed as function arguments.
+
+Let's start with some simple array functions, which are methods on the array object prototype. In this exercise we are looking at Array.prototype.map(), or more simply map.
+
+The map method iterates over each item in an array and returns a new array containing the results of calling the callback function on each element. It does this without mutating the original array.
+
+When the callback is used, it is passed three arguments. The first argument is the current element being processed. The second is the index of that element and the third is the array upon which the map method was called.
+
+See below for an example using the map method on the users array to return a new array containing only the names of the users as elements. For simplicity, the example only uses the first argument of the callback.
+  ```js
+  const users = [
+    { name: 'John', age: 34 },
+    { name: 'Amy', age: 20 },
+    { name: 'camperCat', age: 10 }
+  ];
+  const names = users.map(user => user.name);
+  console.log(names);
+  ```
+The console would display the value [ 'John', 'Amy', 'camperCat' ].
+
+Solution to the exercise:
+  ```js
+  const ratings = watchList.map(({Title, imdbRating}) => ({title:Title, rating:imdbRating}));
+  ```
+
+
+### Implement map on a Prototype:
+As you have seen from applying Array.prototype.map(), or simply map() earlier, the map method returns an array of the same length as the one it was called on. It also doesn't alter the original array, as long as its callback function doesn't.
+
+In other words, map is a pure function, and its output depends solely on its inputs. Plus, it takes another function as its argument.
+
+You might learn a lot about the map method if you implement your own version of it. It is recommended you use a for loop or Array.prototype.forEach().
+
+
+Write your own Array.prototype.myMap(), which should behave exactly like Array.prototype.map(). You should not use the built-in map method. The Array instance can be accessed in the myMap method using this.
+  ```js
+  // The global variable
+  const s = [23, 65, 98, 5];
+  Array.prototype.myMap = function(callback) {
+    const newArray = [];
+    // Only change code below this line
+    this.forEach(n => newArray.push(callback(n)));
+    // Only change code above this line
+    return newArray;
+  };
+  const new_s = s.myMap(function(item) {
+    return item * 2;
+  });
+  ```
+The callback part was extra sketchy, in this case it seems it's just a argument (function) name. This function is given when defining new const: (function(item) {return item * 2;});
+
+
+### Use the filter Method to Extract Data from an Array:
+Another useful array function is Array.prototype.filter(), or simply filter().
+filter calls a function on each element of an array and returns a new array containing only the elements for which that function returns true. In other words, it filters the array, based on the function passed to it. Like map, it does this without needing to modify the original array.
+The callback function accepts three arguments. The first argument is the current element being processed. The second is the index of that element and the third is the array upon which the filter method was called.
+See below for an example using the filter method on the users array to return a new array containing only the users under the age of 30. For simplicity, the example only uses the first argument of the callback.
+  ```js
+  const users = [
+    { name: 'John', age: 34 },
+    { name: 'Amy', age: 20 },
+    { name: 'camperCat', age: 10 }
+  ];
+  const usersUnder30 = users.filter(user => user.age < 30);
+  console.log(usersUnder30); 
+  ```
+The console would display the value [ { name: 'Amy', age: 20 }, { name: 'camperCat', age: 10 } ].
+
+The variable watchList holds an array of objects with information on several movies. Use a combination of filter and map on watchList to assign a new array of objects with only title and rating keys. The new array should only include objects where imdbRating is greater than or equal to 8.0. Note that the rating values are saved as strings in the object and you may need to convert them into numbers to perform mathematical operations on them.
+  ```js
+  const filteredList = watchList.map(({Title, imdbRating}) => ({title:Title, rating:imdbRating })).filter(a => a.rating >= 8);
+  ```
+Note that because filter is placed after map function you are refering to imdbRating as rating because the newly created mapped array key named imdbRating has been renamed.
+
+### Implement the filter Method on a Prototype:
+You might learn a lot about the filter method if you implement your own version of it. It is recommended you use a for loop or Array.prototype.forEach().
+  ```js
+  // The global variable
+  const s = [23, 65, 98, 5];
+  Array.prototype.myFilter = function(callback) {
+    // Only change code below this line
+    const newArray = [];
+    this.forEach(a => callback(a)?newArray.push(a):null);
+    // Only change code above this line
+    return newArray;
+  };
+  const new_s = s.myFilter(function(item) {
+    return item % 2 === 1;
+  });
+  ```
+
+
+### Return Part of an Array Using the slice Method:
+
+  ```js
+
+  ```
+
+
 ### 
 
   ```js
