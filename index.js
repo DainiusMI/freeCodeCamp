@@ -972,7 +972,7 @@ return title.trim().toLowerCase().split(' ').join('-');
 }
 // Only change code above this line
 console.log(urlSlug(" Winter Is Coming"));
-*/
+
 
 function sumAll(arr) {
   let sum = 0;
@@ -984,3 +984,46 @@ function sumAll(arr) {
 
 sumAll([7, 4]);
 console.log(sumAll([7, 4]));
+
+
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  for (let i=0; i<arr1.length; i++){
+    arr2.includes(arr1[i])?null :
+      newArr.push(arr1[i]);
+  }
+  for (let i=0; i<arr2.length; i++){
+    arr1.includes(arr2[i])?null :
+      newArr.push(arr2[i]);
+  }
+  console.log(newArr);
+  return newArr;
+}
+
+diffArray([1, 2, 3, 5, 7], [1, 2, 3, 4, 5]);
+
+
+
+function destroyer(arr, ...rest) {
+  return arr.filter(n => !rest.includes(n));
+}
+
+console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+
+*/
+
+function whatIsInAName(collection, source) {
+  const arr = [];
+  // Only change code below this line
+  arr.push(collection.filter(
+    obj => obj[Object.keys(source)]
+    
+    )
+  );
+  console.log(arr);
+
+  // Only change code above this line
+  return arr;
+}
+
+whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 })

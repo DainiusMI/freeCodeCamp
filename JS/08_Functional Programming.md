@@ -371,7 +371,12 @@ Fill in the urlSlug function so it converts a string title and returns the hyphe
   - The output should be all lower-cased letters
   - The output should not have any spaces
   ```js
-
+  // Only change code below this line
+  function urlSlug(title) {
+    return title.trim().toLowerCase().split(/\s+/).join('-');
+    }
+  // Only change code above this line
+  console.log(urlSlug(" Winter Is  Coming"));
   ```
 
 
