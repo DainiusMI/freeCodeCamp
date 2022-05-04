@@ -349,15 +349,90 @@ bySpace would have the value ["Hello", "World"] and byDigits would have the valu
 Since strings are immutable, the split method makes it easier to work with them.
 
 
-### 
+### Combine an Array into a String Using the join Method:
+The join method is used to join the elements of an array together to create a string. It takes an argument for the delimiter that is used to separate the array elements in the string.
+  ```js
+  const arr = ["Hello", "World"];
+  const str = arr.join(" ");
+  ```
+str would have a value of the string Hello World.
 
+
+### Apply Functional Programming to Convert Strings to URL Slugs:
+The last several challenges covered a number of useful array and string methods that follow functional programming principles. We've also learned about reduce, which is a powerful method used to reduce problems to simpler forms. From computing averages to sorting, any array operation can be achieved by applying it. Recall that map and filter are special cases of reduce.
+
+Let's combine what we've learned to solve a practical problem.
+
+Many content management sites (CMS) have the titles of a post added to part of the URL for simple bookmarking purposes. For example, if you write a Medium post titled Stop Using Reduce, it's likely the URL would have some form of the title string in it (.../stop-using-reduce). You may have already noticed this on the freeCodeCamp site.
+
+Fill in the urlSlug function so it converts a string title and returns the hyphenated version for the URL. You can use any of the methods covered in this section, and don't use replace. Here are the requirements:
+  - The input is a string with spaces and title-cased words
+  - The output is a string with the spaces between words replaced by a hyphen (-)
+  - The output should be all lower-cased letters
+  - The output should not have any spaces
   ```js
 
   ```
 
 
-### 
+### Use the every Method to Check that Every Element in an Array Meets a Criteria:
+The every method works with arrays to check if every element passes a particular test. It returns a Boolean value - true if all values meet the criteria, false if not.
+  ```js
+  const numbers = [1, 5, 8, 0, 10, 11];
+  numbers.every(function(currentValue) {
+    return currentValue < 10;
+  });
+  ```
+The every method would return false here.
 
+
+### Use the some Method to Check that Any Elements in an Array Meet a Criteria:
+The some method works with arrays to check if any element passes a particular test. It returns a Boolean value - true if any of the values meet the criteria, false if not.
+  ```js
+  const numbers = [10, 50, 8, 220, 110, 11];
+  numbers.some(function(currentValue) {
+    return currentValue < 10;
+  });
+  ```
+The some method would return true.
+
+
+### Introduction to Currying and Partial Application:
+The arity of a function is the number of arguments it requires. Currying a function means to convert a function of N arity into N functions of arity 1.
+In other words, it restructures a function so it takes one argument, then returns another function that takes the next argument, and so on.
+  ```js
+  function unCurried(x, y) {
+    return x + y;
+  }
+  function curried(x) {
+    return function(y) {
+      return x + y;
+    }
+  }
+  const curried = x => y => x + y
+  curried(1)(2)
+  ```
+curried(1)(2) would return 3.
+
+This is useful in your program if you can't supply all the arguments to a function at one time. You can save each function call into a variable, which will hold the returned function reference that takes the next argument when it's available. Here's an example using the curried function in the example above:
+  ```js
+  const funcForY = curried(1);
+  console.log(funcForY(2)); // 3
+  ```
+
+Similarly, partial application can be described as applying a few arguments to a function at a time and returning another function that is applied to more arguments. Here's an example:
+  ```js
+  function impartial(x, y, z) {
+    return x + y + z;
+  }
+  const partialFn = impartial.bind(this, 1, 2);
+  partialFn(10); // 13
+  ```
+
+### Sum All Numbers in a Range:
+We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+
+For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
   ```js
 
   ```

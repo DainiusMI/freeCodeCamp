@@ -957,4 +957,30 @@ function nonMutatingSort(arr) {
 console.log(nonMutatingSort(globalArray));
 
 
+function splitify(str) {
+  // Only change code below this line
+return str.split(/\W/)
+  // Only change code above this line
+}
+
+console.log(splitify("Hello World,I-am code"));
+
+
+// Only change code below this line
+function urlSlug(title) {
+return title.trim().toLowerCase().split(' ').join('-');
+}
+// Only change code above this line
+console.log(urlSlug(" Winter Is Coming"));
 */
+
+function sumAll(arr) {
+  let sum = 0;
+  for (let i=Math.min(...arr); i<=Math.max(...arr); i++){
+    sum += i;
+  }
+  return sum;
+}
+
+sumAll([7, 4]);
+console.log(sumAll([7, 4]));
