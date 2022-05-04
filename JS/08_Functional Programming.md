@@ -190,6 +190,94 @@ You might learn a lot about the filter method if you implement your own version 
 
 
 ### Return Part of an Array Using the slice Method:
+The slice method returns a copy of certain elements of an array. It can take two arguments, the first gives the index of where to begin the slice, the second is the index for where to end the slice (and it's non-inclusive). If the arguments are not provided, the default is to start at the beginning of the array through the end, which is an easy way to make a copy of the entire array. The slice method does not mutate the original array, but returns a new one.
+  ```js
+  const arr = ["Cat", "Dog", "Tiger", "Zebra"];
+  const newArray = arr.slice(1, 3);
+  ```
+newArray would have the value ["Dog", "Tiger"].
+
+
+### Remove Elements from an Array Using slice Instead of splice:
+A common pattern while working with arrays is when you want to remove items and keep the rest of the array. JavaScript offers the splice method for this, which takes arguments for the index of where to start removing items, then the number of items to remove. If the second argument is not provided, the default is to remove items through the end. However, the splice method mutates the original array it is called on. Here's an example:
+  ```js
+  const cities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+  cities.splice(3, 1);
+  ```
+Here splice returns the string London and deletes it from the cities array. cities will have the value ["Chicago", "Delhi", "Islamabad", "Berlin"].
+
+As we saw in the last challenge, the slice method does not mutate the original array, but returns a new one which can be saved into a variable. Recall that the slice method takes two arguments for the indices to begin and end the slice (the end is non-inclusive), and returns those items in a new array. Using the slice method instead of splice helps to avoid any array-mutating side effects.
+
+
+### Combine Two Arrays Using the concat Method:
+Concatenation means to join items end to end. JavaScript offers the concat method for both strings and arrays that work in the same way. For arrays, the method is called on one, then another array is provided as the argument to concat, which is added to the end of the first array. It returns a new array and does not mutate either of the original arrays. Here's an example:
+  ```js
+  [1, 2, 3].concat([4, 5, 6]);
+  ```
+The returned array would be [1, 2, 3, 4, 5, 6].
+
+
+### Add Elements to the End of an Array Using concat Instead of push:
+Functional programming is all about creating and using non-mutating functions.
+The last challenge introduced the concat method as a way to combine arrays into a new one without mutating the original arrays. Compare concat to the push method. push adds an item to the end of the same array it is called on, which mutates that array. Here's an example:
+  ```js
+  const arr = [1, 2, 3];
+  arr.push([4, 5, 6]);
+  ```
+arr would have a modified value of [1, 2, 3, [4, 5, 6]], which is not the functional programming way.
+concat offers a way to add new items to the end of an array without any mutating side effects.
+
+### Use the reduce Method to Analyze Data:
+Array.prototype.reduce(), or simply reduce(), is the most general of all array operations in JavaScript. You can solve almost any array processing problem using the reduce method.
+
+The reduce method allows for more general forms of array processing, and it's possible to show that both filter and map can be derived as special applications of reduce. The reduce method iterates over each item in an array and returns a single value (i.e. string, number, object, array). This is achieved via a callback function that is called on each iteration.
+
+The callback function accepts four arguments. The first argument is known as the accumulator, which gets assigned the return value of the callback function from the previous iteration, the second is the current element being processed, the third is the index of that element and the fourth is the array upon which reduce is called.
+
+In addition to the callback function, reduce has an additional parameter which takes an initial value for the accumulator. If this second parameter is not used, then the first iteration is skipped and the second iteration gets passed the first element of the array as the accumulator.
+
+See below for an example using reduce on the users array to return the sum of all the users' ages. For simplicity, the example only uses the first and second arguments.
+  ```js
+  const users = [
+    { name: 'John', age: 34 },
+    { name: 'Amy', age: 20 },
+    { name: 'camperCat', age: 10 }
+  ];
+  const sumOfAges = users.reduce((sum, user) => sum + user.age, 0);
+  console.log(sumOfAges);
+  ```
+The console would display the value 64.
+
+In another example, see how an object can be returned containing the names of the users as properties with their ages as values.
+  ```js
+  const users = [
+    { name: 'John', age: 34 },
+    { name: 'Amy', age: 20 },
+    { name: 'camperCat', age: 10 }
+  ];
+  const usersObj = users.reduce((obj, user) => {
+    obj[user.name] = user.age;
+    return obj;
+  }, {});
+  console.log(usersObj);
+  ```
+The console would display the value { John: 34, Amy: 20, camperCat: 10 }.
+
+
+example from exercise:
+  ```js
+  function getRating(watchList) {
+    // Only change code below this line
+    let averageRating;
+    let nolanMovies = [];
+    nolanMovies = watchList.filter(movie => movie.Director === 'Christopher Nolan').map(rating => +rating.imdbRating);
+    averageRating = nolanMovies.reduce((a,b) => {return a+b;}) / nolanMovies.length;
+    // Only change code above this line
+    return averageRating;
+  }
+  ```
+
+### 
 
   ```js
 
