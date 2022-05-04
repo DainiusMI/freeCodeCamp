@@ -277,11 +277,76 @@ example from exercise:
   }
   ```
 
-### 
+### se Higher-Order Functions map, filter, or reduce to Solve a Complex Problem:
+Now that you have worked through a few challenges using higher-order functions like map(), filter(), and reduce(), you now get to apply them to solve a more complex challenge.
 
+Complete the code for the squareList function using any combination of map(), filter(), and reduce(). The function should return a new array containing the squares of only the positive integers (decimal numbers are not integers) when an array of real numbers is passed to it. An example of an array of real numbers is [-3, 4.8, 5, 3, -3.2].
+
+Note: Your function should not use any kind of for or while loops or the forEach() function.
   ```js
-
+  const squareList = arr => {
+    // Only change code below this line
+    return  arr.filter(p => Number.isInteger(p) === true && p > 0).map(n => Math.pow(n, 2));
+    // Only change code above this line
+  };
+  const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+  console.log(squaredIntegers);
   ```
+
+
+### Sort an Array Alphabetically using the sort Method:
+The sort method sorts the elements of an array according to the callback function.
+  ```js
+  function ascendingOrder(arr) {
+    return arr.sort(function(a, b) {
+      return a - b;
+    });
+  }
+  ascendingOrder([1, 5, 2, 3, 4]);
+  ```
+This would return the value [1, 2, 3, 4, 5].
+  ```js
+  function reverseAlpha(arr) {
+    return arr.sort(function(a, b) {
+      return a === b ? 0 : a < b ? 1 : -1;
+    });
+  }
+  reverseAlpha(['l', 'h', 'z', 'b', 's']);
+  ```
+This would return the value ['z', 's', 'l', 'h', 'b'].
+
+JavaScript's default sorting method is by string Unicode point value, which may return unexpected results. Therefore, it is encouraged to provide a callback function to specify how to sort the array items. When such a callback function, normally called compareFunction, is supplied, the array elements are sorted according to the return value of the compareFunction: If compareFunction(a,b) returns a value less than 0 for two elements a and b, then a will come before b. If compareFunction(a,b) returns a value greater than 0 for two elements a and b, then b will come before a. If compareFunction(a,b) returns a value equal to 0 for two elements a and b, then a and b will remain unchanged.
+
+
+### Return a Sorted Array Without Changing the Original Array:
+A side effect of the sort method is that it changes the order of the elements in the original array. In other words, it mutates the array in place. One way to avoid this is to first concatenate an empty array to the one being sorted (remember that slice and concat return a new array), then run the sort method.
+
+Use the sort method in the nonMutatingSort function to sort the elements of an array in ascending order. The function should return a new array, and not mutate the globalArray variable.
+  ```js
+  const globalArray = [5, 6, 3, 2, 9];
+  function nonMutatingSort(arr) {
+    // Only change code below this line
+    let sortedArr = arr.slice(); // instead of declaring a variable I could had: return [].concat(arr).sort();
+    return sortedArr.sort(function(a,b){
+      return a-b;
+    });
+    // Only change code above this line
+  }
+  ```
+returns [2, 3, 5, 6, 9]
+
+
+### Split a String into an Array Using the split Method:
+The split method splits a string into an array of strings. It takes an argument for the delimiter, which can be a character to use to break up the string or a regular expression. For example, if the delimiter is a space, you get an array of words, and if the delimiter is an empty string, you get an array of each character in the string.
+  ```js
+  const str = "Hello World";
+  const bySpace = str.split(" ");
+
+  const otherString = "How9are7you2today";
+  const byDigits = otherString.split(/\d/);
+  ```
+bySpace would have the value ["Hello", "World"] and byDigits would have the value ["How", "are", "you", "today"].
+Since strings are immutable, the split method makes it easier to work with them.
 
 
 ### 

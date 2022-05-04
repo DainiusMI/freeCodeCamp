@@ -926,4 +926,35 @@ function getRating(watchList) {
 console.log(getRating(watchList));
 
 
+const squareList = arr => {
+  // Only change code below this line
+  return  arr.filter(p => Number.isInteger(p) === true && p > 0).map(n => Math.pow(n, 2));
+  // Only change code above this line
+};
+const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+console.log(squaredIntegers);
+
+
+function alphabeticalOrder(arr) {
+  // Only change code below this line
+  return arr.sort(function(a, b){return a === b ? 0 : a > b? 1 : -1;})
+  // Only change code above this line
+};
+
+console.log(alphabeticalOrder(["a", "d", "c", "a", "z", "g"]));
+
+
+const globalArray = [5, 6, 3, 2, 9];
+function nonMutatingSort(arr) {
+  // Only change code below this line
+  let sortedArr = arr.slice();
+  return sortedArr.sort(function(a,b){
+    return a-b;
+  });
+  // Only change code above this line
+}
+
+console.log(nonMutatingSort(globalArray));
+
+
 */
