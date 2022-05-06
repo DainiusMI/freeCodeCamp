@@ -1045,7 +1045,29 @@ function spinalCase(str) {
 }
 console.log(spinalCase("The_AndyGriffith_Show"));
 
+
+
+function translatePigLatin(str) {
+  console.log(str.match(/^[^aieou]* /ig));
+  return str.match(/^[aieou]/i)?
+  str.concat('way')
+  :
+  str.replace(/^[^aieou]+/, '').concat(str.match(/^[^aieou]+/) + 'ay');
+} 
+console.log(translatePigLatin("glove"));
+console.log(translatePigLatin("california"));
 */
+
+
+function myReplace(str, before, after) {
+  return  before.match(/^[A-Z]/)?
+  str.replace(before, after.charAt(0).toUpperCase()+after.slice(1))
+  :str.replace(before, after.charAt(0).toLowerCase()+after.slice(1));
+}
+
+console.log(myReplace("I think we should look up there", "up", "Down"));
+
+
 
 
 
