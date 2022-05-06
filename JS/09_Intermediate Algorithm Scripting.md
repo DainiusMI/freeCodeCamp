@@ -166,6 +166,44 @@ How it could had been done:
   ```
 
 
+### Missing letters:
+Find the missing letter in the passed letter range and return it.
+If all letters are present in the range, return undefined.
+  ```js
+  function fearNotLetter(str) {
+    const alphabetArr = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    let arr = alphabetArr.slice(alphabetArr.indexOf(str.charAt(0)), alphabetArr.indexOf(str.charAt(str.length-1)));
+    let result;
+    arr.filter(i => {
+      str.includes(i)?null:result=i;
+    })
+    return result;
+  }
+  ```
+It should had been done with charCodeAt()
+  ```js
+  function fearNotLetter(str) {
+    for (var i = 0; i < str.length; i++) {
+      /* code of current character */
+      var code = str.charCodeAt(i); // gave numbers in incremental order (letter id's)
+      /* if code of current character is not equal to first character + no of iteration
+          hence character has been escaped */
+      if (code !== str.charCodeAt(0) + i) { // checked if letter id's did not skip
+        /* if current character has escaped one character find previous char and return */
+        return String.fromCharCode(code - 1);
+      }
+    }
+    return undefined;
+  }
+  ```
+
+### 
+
+  ```js
+
+  ```
+
+
 ### 
 
   ```js

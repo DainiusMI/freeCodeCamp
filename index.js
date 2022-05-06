@@ -1066,7 +1066,7 @@ function myReplace(str, before, after) {
 }
 
 console.log(myReplace("I think we should look up there", "up", "Down"));
-*/
+
 
 
 function pairElement(str) {
@@ -1097,7 +1097,42 @@ function pairElement(str) {
 }
 
 console.log(pairElement("GCG"));
-
-
 console.log(pairElement("TTGAG"));
+
+
+
+
+
+function fearNotLetter(str) {
+  const alphabetArr = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  let arr = alphabetArr.slice(alphabetArr.indexOf(str.charAt(0)), alphabetArr.indexOf(str.charAt(str.length-1)));
+  let result;
+  arr.filter(i => {
+    str.includes(i)?null:result=i;
+  })
+  return result;
+}
+*/
+function fearNotLetter(str) {
+  for (var i = 0; i < str.length; i++) {
+    /* code of current character */
+    var code = str.charCodeAt(i);
+    console.log(code)
+    console.log(str.charCodeAt(0) + i)
+
+    /* if code of current character is not equal to first character + no of iteration
+        hence character has been escaped */
+    if (code !== str.charCodeAt(0) + i) {
+      /* if current character has escaped one character find previous char and return */
+      return String.fromCharCode(code - 1);
+    }
+  }
+  return undefined;
+}
+
+console.log(fearNotLetter("abce"));
+
+
+
+
 
