@@ -1056,7 +1056,7 @@ function translatePigLatin(str) {
 } 
 console.log(translatePigLatin("glove"));
 console.log(translatePigLatin("california"));
-*/
+
 
 
 function myReplace(str, before, after) {
@@ -1066,8 +1066,14 @@ function myReplace(str, before, after) {
 }
 
 console.log(myReplace("I think we should look up there", "up", "Down"));
+*/
 
 
+function pairElement(str) {
+  return str;
+}
+
+console.log(pairElement("GCG"));
 
 
 
