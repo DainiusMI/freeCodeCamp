@@ -180,7 +180,7 @@ If all letters are present in the range, return undefined.
     return result;
   }
   ```
-It should had been done with charCodeAt()
+It should had been done with charCodeAt() and fromCharCode():
   ```js
   function fearNotLetter(str) {
     for (var i = 0; i < str.length; i++) {
