@@ -1070,11 +1070,34 @@ console.log(myReplace("I think we should look up there", "up", "Down"));
 
 
 function pairElement(str) {
-  return str;
+  let finalArr = [];
+  for(let i=0; i<str.length; i++){
+    let pairArr = [];
+    pairArr.push(str[i]);
+    switch (str[i]) {
+      case 'G': 
+        pairArr.push('C');
+        finalArr.push(pairArr);
+        break;
+      case 'C':
+        pairArr.push('G');
+        finalArr.push(pairArr);
+        break;
+      case 'A':
+        pairArr.push('T');
+        finalArr.push(pairArr);
+        break;
+      case 'T':
+        pairArr.push('A');
+        finalArr.push(pairArr);
+        break;
+    }
+  }
+  return finalArr;
 }
 
 console.log(pairElement("GCG"));
 
 
-
+console.log(pairElement("TTGAG"));
 

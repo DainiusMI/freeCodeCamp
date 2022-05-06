@@ -118,8 +118,51 @@ Base pairs are a pair of AT and CG. Match the missing element to the provided ch
 Return the provided character as the first element in each array.
 For example, for the input GCG, return [["G", "C"], ["C","G"], ["G", "C"]]
 The character and its pair are paired up in an array, and all the arrays are grouped into one encapsulating array.
-  ```js
 
+My stupid ass bellow:
+  ```js
+  function pairElement(str) {
+    let finalArr = [];
+    for(let i=0; i<str.length; i++){
+      let pairArr = [];
+      pairArr.push(str[i]);
+      switch (str[i]) {
+        case 'G': 
+          pairArr.push('C');
+          finalArr.push(pairArr);
+          break;
+        case 'C':
+          pairArr.push('G');
+          finalArr.push(pairArr);
+          break;
+        case 'A':
+          pairArr.push('T');
+          finalArr.push(pairArr);
+          break;
+        case 'T':
+          pairArr.push('A');
+          finalArr.push(pairArr);
+          break;
+      }
+    }
+    return finalArr;
+  }
+  ```
+How it could had been done:
+  ```js
+  function pairElement(str) {
+    //create object for pair lookup
+    var pairs = {
+      A: "T",
+      T: "A",
+      C: "G",
+      G: "C"
+    };
+    //split string into array of characters
+    var arr = str.split("");
+    //map character to array of character and matching pair
+    return arr.map(x => [x, pairs[x]]);
+  }
   ```
 
 
