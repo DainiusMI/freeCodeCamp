@@ -1009,21 +1009,44 @@ function destroyer(arr, ...rest) {
 }
 
 console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
-
-*/
-
 function whatIsInAName(collection, source) {
   const arr = [];
   // Only change code below this line
-  arr.push(collection.filter(
-    obj => obj[Object.keys(source)]
-    
-    )
-  );
-  console.log(arr);
-
+ // arr.push(collection.filter(obj => obj[Object.keys(source)] == source[Object.keys(source)]));
+ 
+  collection.filter(obj => {
+    for (let key in source) { 
+      obj[key] === source[key]?arr.push(obj):null;
+    }
+  });
   // Only change code above this line
+  console.log(arr);
   return arr;
 }
 
-whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 })
+
+function whatIsInAName(collection, source) {
+  let testKeys = Object.keys(source);
+  return collection
+  .filter(obj => testKeys
+    .every(
+      key => obj.hasOwnProperty(key) && obj[key] === source[key]
+    )
+  );
+}
+//whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 })
+console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }))
+
+
+
+
+function spinalCase(str) {
+  return str.split(/\W|_|(?=[A-Z])/).join('-').toLowerCase();
+}
+console.log(spinalCase("The_AndyGriffith_Show"));
+
+*/
+
+
+
+

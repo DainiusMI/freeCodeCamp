@@ -55,11 +55,30 @@ Make a function that looks through an array of objects (first argument) and retu
 
 For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], and the second argument is { last: "Capulet" }, then you must return the third object from the array (the first argument), because it contains the name and its value, that was passed on as the second argument.
   ```js
-
+  function whatIsInAName(collection, source) {
+    let testKeys = Object.keys(source);
+    return collection
+    .filter(obj => testKeys
+      .every(
+        key => obj.hasOwnProperty(key) && obj[key] === source[key]
+      )
+    );
+  }
+  console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }))
   ```
 
 
-### 
+### Spinal Tap Case
+Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
+  ```js
+  function spinalCase(str) {
+    return str.split(/\W|_|(?=[A-Z])/).join('-').toLowerCase();
+  }
+  console.log(spinalCase("The_AndyGriffith_Show"));
+  ```
+
+
+### Pig Latin:
 
   ```js
 
