@@ -1180,7 +1180,7 @@ function sumFibs(num) {
   }).reduce((a, b) => a + b);
 }
 sumFibs(4);
-*/
+
 
 
 
@@ -1200,6 +1200,41 @@ function sumFibs(num) {
 console.log(sumFibs(75025));
 
 
+
+function sumPrimes(num) {
+  let arr = [];
+  let i = 2;
+  while (i <= num) {
+    if (arr.every((n) => i % n !==0)){
+      arr.push(i);
+    }
+    i++;
+  };
+  console.log(arr.at(-1))
+  return arr.reduce((a, b) => a + b);
+}
+
+console.log(sumPrimes(977));
+
+
+*/
+function smallestCommons(arr) {
+  let numRange = [];
+  for (let i = Math.min(...arr); i <= Math.max(...arr); i++) {
+    numRange.push(i);
+  } 
+  let result = 0;
+  let num = 0;
+  do {
+    num++;
+    if (numRange.every(i => num % i === 0)) {
+      result = num;
+    }
+  } while (result === 0);
+  return result;
+}
+
+console.log(smallestCommons([5,1]));
 
 
 

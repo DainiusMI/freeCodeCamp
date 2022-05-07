@@ -284,17 +284,47 @@ Could had done much simpler like this:
   ```
 
 
-### 
+### Sum All Primes:
+A prime number is a whole number greater than 1 with exactly two divisors: 1 and itself. For example, 2 is a prime number because it is only divisible by 1 and 2. In contrast, 4 is not prime since it is divisible by 1, 2 and 4.
 
+Rewrite sumPrimes so it returns the sum of all prime numbers that are less than or equal to num.
   ```js
-
+  function sumPrimes(num) {
+    let arr = [];
+    let i = 2;
+    while (i <= num) {
+      if (arr.every((n) => i % n !==0)){
+        arr.push(i);
+      }
+      i++;
+    };
+    console.log(arr.at(-1))
+    return arr.reduce((a, b) => a + b);
+  }
+  console.log(sumPrimes(977));
   ```
 
 
-### 
-
+### Smallest Common Multiple:
+Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
+The range will be an array of two numbers that will not necessarily be in numerical order.
+For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also evenly divisible by all numbers between 1 and 3. The answer here would be 6.
   ```js
-
+  function smallestCommons(arr) {
+    let numRange = [];
+    for (let i = Math.min(...arr); i <= Math.max(...arr); i++) {
+      numRange.push(i);
+    } 
+    let result = 0;
+    let num = 0;
+    do {
+      num++;
+      if (numRange.every(i => num % i === 0)) {
+        result = num;
+      }
+    } while (result === 0);
+    return result;
+  }
   ```
 
 
