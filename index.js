@@ -1112,18 +1112,18 @@ function fearNotLetter(str) {
   })
   return result;
 }
-*/
+
 function fearNotLetter(str) {
   for (var i = 0; i < str.length; i++) {
-    /* code of current character */
+    // code of current character 
     var code = str.charCodeAt(i);
     console.log(code)
     console.log(str.charCodeAt(0) + i)
 
-    /* if code of current character is not equal to first character + no of iteration
-        hence character has been escaped */
+    // if code of current character is not equal to first character + no of iteration
+     //   hence character has been escaped 
     if (code !== str.charCodeAt(0) + i) {
-      /* if current character has escaped one character find previous char and return */
+      //if current character has escaped one character find previous char and return 
       return String.fromCharCode(code - 1);
     }
   }
@@ -1131,8 +1131,19 @@ function fearNotLetter(str) {
 }
 
 console.log(fearNotLetter("abce"));
+*/
 
 
+function uniteUnique(...arr) {
+  const result = [];
+  arr.filter(innerArr => {
+    for (let item in innerArr){
+      result.includes(innerArr[item])?null:result.push(innerArr[item]);
+    }
+  })
+  return result;
+}
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
 
 
 
