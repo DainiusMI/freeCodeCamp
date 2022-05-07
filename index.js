@@ -1131,7 +1131,7 @@ function fearNotLetter(str) {
 }
 
 console.log(fearNotLetter("abce"));
-*/
+
 
 
 function uniteUnique(...arr) {
@@ -1144,6 +1144,30 @@ function uniteUnique(...arr) {
   return result;
 }
 console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+
+
+function convertHTML(str) {
+  return str.replace(/[&<>"']/g, i => {
+    switch(i) {
+      case '&' : return '&amp;';
+      case '<' : return '&lt;';
+      case '>' : return '&gt;';
+      case '"' : return '&quot;';
+      case '\'' : return '&apos;';
+    }
+  });
+}
+
+//onsole.log(convertHTML("Dolce & Gabbana"));
+//console.log(convertHTML("Hamburgers < Pizza < Tacos"));
+// console.log(convertHTML('Stuff in "quotation marks"'));
+console.log(convertHTML("Schindler's List"));
+
+*/
+
+
+
+
 
 
 

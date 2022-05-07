@@ -227,9 +227,19 @@ Could had been done with flat():
 
 
 ### Convert HTML Entities:
-
+Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
   ```js
-
+  function convertHTML(str) {
+    return str.replace(/[&<>"']/g, i => {
+      switch(i) {
+        case '&' : return '&amp;';
+        case '<' : return '&lt;';
+        case '>' : return '&gt;';
+        case '"' : return '&quot;';
+        case '\'' : return '&apos;';  // '\'' == " ' "
+      }
+    });
+  }
   ```
 
 
