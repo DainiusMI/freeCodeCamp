@@ -1163,7 +1163,41 @@ function convertHTML(str) {
 // console.log(convertHTML('Stuff in "quotation marks"'));
 console.log(convertHTML("Schindler's List"));
 
+
+
+function sumFibs(num) {
+  if (num === 1) {
+    return 1;
+  }
+  let arrFib = [];
+  for (let i = 0; i <= num; i++) {
+    i===0||i===1?arrFib.push(1):arrFib.push(arrFib[i-2]+arrFib[i-1]);
+  }
+  return arrFib.filter(a => {
+    if (a < num && a%2 !== 0){
+      return a;
+    }
+  }).reduce((a, b) => a + b);
+}
+sumFibs(4);
 */
+
+
+
+function sumFibs(num) {
+  let arrFib = [];
+  let i = 0;
+  do {
+    i===0||i===1?arrFib.push(1):arrFib.push(arrFib[i-2]+arrFib[i-1]);
+    i++;
+  } while (arrFib[i-1] < num);
+  return arrFib.length < 2 ? 1 : arrFib.filter(a => {
+    if (a <= num && a%2 !== 0){
+      return a;
+    }
+  }).reduce((a, b) => a + b);
+}
+console.log(sumFibs(75025));
 
 
 

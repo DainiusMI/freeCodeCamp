@@ -243,6 +243,54 @@ Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a strin
   ```
 
 
+### Sum All Odd Fibonacci Numbers:
+Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
+
+The first two numbers in the Fibonacci sequence are 1 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
+
+For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.
+
+  ```js
+  function sumFibs(num) {
+    let arrFib = [];
+    let i = 0;
+    do {
+      i===0||i===1?arrFib.push(1):arrFib.push(arrFib[i-2]+arrFib[i-1]);
+      i++;
+    } while (arrFib[i-1] < num);
+    return arrFib.length < 2 ? 1 : arrFib.filter(a => {
+      if (a <= num && a%2 !== 0){
+        return a;
+      }
+    }).reduce((a, b) => a + b);
+  }
+  console.log(sumFibs(75025));
+  ```
+Could had done much simpler like this:
+  ```js
+  function sumFibs(num) {
+    let prevNumber = 0;
+    let currNumber = 1;
+    let result = 0;
+    while (currNumber <= num) {
+      if (currNumber % 2 !== 0) {
+        result += currNumber;
+      }
+      currNumber += prevNumber;
+      prevNumber = currNumber - prevNumber;
+    }
+    return result;
+  }
+  ```
+
+
+### 
+
+  ```js
+
+  ```
+
+
 ### 
 
   ```js
