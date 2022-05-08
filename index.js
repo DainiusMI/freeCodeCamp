@@ -1275,7 +1275,6 @@ function binaryAgent(str, arr = []) {
 console.log(binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"));
 
 
-*/
 
 
 function truthCheck(collection, pre) {
@@ -1286,5 +1285,44 @@ truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", rol
 
 console.log(truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "name"))
 
+function addTogether(x, y) {
+  if (!Number.isInteger(x)) {
+    return undefined
+  }
+  else if (y === undefined) {
+      return function(y) {
+        if (!Number.isInteger(y)) {
+          return undefined
+        }
+        return x+y
+      }
+  }
+  else {
+    if (!Number.isInteger(y)) {
+      return undefined
+    }
+    else
+    return x + y
+  } 
+}
+*/
 
+function addTogether(x, y) {
+  console.log(arguments)
+  function innerFunc(x, y){
+    if (!Number.isInteger(x) || !Number.isInteger(y)) {
+      return undefined
+    }
+    return x + y
+  }
+  if (y === undefined) {
+      return function(y) {
+        return innerFunc(x, y);
+      }
+  }
+  else {
+    return innerFunc(x, y);
+  } 
+}
 
+console.log(addTogether(1, 4));

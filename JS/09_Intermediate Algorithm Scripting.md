@@ -386,11 +386,54 @@ Remember, you can access object properties through either dot notation or [] not
   ```
 
 
-### 
+### Arguments Optional:
+Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
+
+For example, addTogether(2, 3) should return 5, and addTogether(2) should return a function.
+
+Calling this returned function with a single argument will then return the sum:
+  ```js
+  var sumTwoAnd = addTogether(2);
+  ```
+sumTwoAnd(3) returns 5.
+If either argument isn't a valid number, return undefined.
+  ```js
+  function addTogether(x, y) {
+    if (!Number.isInteger(x)) {
+      return undefined
+    }
+    else if (y === undefined) {
+        return function(y) {
+          if (!Number.isInteger(y)) {
+            return undefined
+          }
+          return x+y
+        }
+    }
+    else {
+      if (!Number.isInteger(y)) {
+        return undefined
+      }
+      else
+      return x + y
+    } 
+  }
+  addTogether(2, 3)
+  ```
 
   ```js
-
+    function addTogether() {
+    const [first, second] = arguments;
+    if (typeof(first) !== "number")
+      return undefined;
+    if (second === undefined)
+      return (second) => addTogether(first, second);
+    if (typeof(second) !== "number")
+      return undefined;
+    return first + second;
+  }
   ```
+not like my mess, note how he assigned function arguments: const [first, second] = arguments;
 
 
 ### 
