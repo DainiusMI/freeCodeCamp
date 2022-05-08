@@ -1235,22 +1235,33 @@ function smallestCommons(arr) {
 
 console.log(smallestCommons([2,5]));
 
-*/
-
-function dropElements(arr, func) {
-  let startIndex;
-  let i = 0;
-  while (startIndex === undefined && arr.length > i){
-    func(arr[i])?startIndex=i:i++;
+function dropElements(arr, func, i = 0, sliceIndex) {
+  while (sliceIndex === undefined && arr.length > i){
+    func(arr[i])?sliceIndex=i:i++;
   }
-  return arr.slice(i);
+  return sliceIndex!==undefined?arr.slice(sliceIndex):[];
 }
 
 console.log(dropElements([1, 2, 3], function(n) {return n < 3; }));
-//console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3;}));
+console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3;}));
 console.log(dropElements([0, 1, 0, 1], function(n) {return n === 1;}));
+console.log(dropElements([1, 2, 3, 4], function(n) {return n > 5;}))
 
 
+
+*/
+
+
+const result = [];
+function steamrollArray(arr) {
+  arr.filter(i => !Array.isArray(i)?result.push(i):
+  steamrollArray(i)
+  );
+  return  result
+}
+
+//console.log(steamrollArray([1, [2], [3, [[4]]]]));
+console.log(steamrollArray([[["a"]], [["b"]]]));
 
 
 
