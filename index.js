@@ -1217,7 +1217,6 @@ function sumPrimes(num) {
 console.log(sumPrimes(977));
 
 
-*/
 function smallestCommons(arr) {
   let numRange = [];
   for (let i = Math.min(...arr); i <= Math.max(...arr); i++) {
@@ -1228,13 +1227,28 @@ function smallestCommons(arr) {
   do {
     num++;
     if (numRange.every(i => num % i === 0)) {
-      result = num;
+      return num;
     }
   } while (result === 0);
-  return result;
+
 }
 
-console.log(smallestCommons([5,1]));
+console.log(smallestCommons([2,5]));
+
+*/
+
+function dropElements(arr, func) {
+  let startIndex;
+  let i = 0;
+  while (startIndex === undefined && arr.length > i){
+    func(arr[i])?startIndex=i:i++;
+  }
+  return arr.slice(i);
+}
+
+console.log(dropElements([1, 2, 3], function(n) {return n < 3; }));
+//console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3;}));
+console.log(dropElements([0, 1, 0, 1], function(n) {return n === 1;}));
 
 
 
