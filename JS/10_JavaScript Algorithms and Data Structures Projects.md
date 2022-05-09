@@ -28,17 +28,67 @@ Note: You'll need to remove all non-alphanumeric characters (punctuation, spaces
 Not to happy about how the function looks like
 
 
-### 
-
+### Roman Numeral Converter:
+Convert the given number into a roman numeral.
+All roman numerals answers should be provided in upper-case.
   ```js
-
+  function convertToRoman(num) {
+    let result = '';
+    const romanValues = {
+      M: 1000,
+      CM: 900,
+      D: 500,
+      CD: 400,
+      C: 100,
+      XC: 90,
+      L: 50,
+      XL: 40,
+      X: 10,
+      IX: 9,
+      V: 5,
+      IV: 4,
+      III: 3,
+      II: 2,
+      I: 1,
+    };
+    for (let key in romanValues) {
+      while (num >= romanValues[key]) {
+        num -= romanValues[key];
+        result += key;
+      }  
+    }
+    return result;
+  }
   ```
+Was hard to figure out a approach to make it work
 
 
-### 
+### Caesars Cipher:
+One of the simplest and most widely known ciphers is a Caesar cipher, also known as a shift cipher. In a shift cipher the meanings of the letters are shifted by some set amount.
 
+A common modern use is the ROT13 cipher, where the values of the letters are shifted by 13 places. Thus A ↔ N, B ↔ O and so on.
+
+Write a function which takes a ROT13 encoded string as input and returns a decoded string.
+
+All letters will be uppercase. Do not transform any non-alphabetic character (i.e. spaces, punctuation), but do pass them on.
   ```js
-
+  function rot13(str) {
+    let result = '';
+    for (let i = 0; i < str.length; i++) {
+      if (str[i].match(/\w/)) {
+        if (String.fromCharCode(str[i].charCodeAt(0)-13).match(/[A-Z]/)) {
+          result += String.fromCharCode(str[i].charCodeAt(0)-13);
+        }
+        else {
+          result += String.fromCharCode(str[i].charCodeAt(0)+13);
+        }
+      }
+      else {
+        result +=  str[i];
+      }
+    }
+    return result;
+  }
   ```
 
 

@@ -1369,7 +1369,6 @@ function orbitalPeriod(arr) {
 console.log(orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]));
 
 
-*/
 
 function palindrome(str) {
   let arr = [];
@@ -1385,5 +1384,61 @@ function palindrome(str) {
 console.log(palindrome("_rAce car"));
 //console.log(palindrome("0_0 (: /-\ :) 0-0"))
 //console.log(palindrome("almostomla"))
+
+
+
+function convertToRoman(num) {
+  let result = '';
+  const romanValues = {
+    M: 1000,
+    CM: 900,
+    D: 500,
+    CD: 400,
+    C: 100,
+    XC: 90,
+    L: 50,
+    XL: 40,
+    X: 10,
+    IX: 9,
+    V: 5,
+    IV: 4,
+    III: 3,
+    II: 2,
+    I: 1,
+  };
+  for (let key in romanValues) {
+    while (num >= romanValues[key]) {
+      num -= romanValues[key];
+      result += key;
+    }  
+  }
+  return result;
+}
+ 
+console.log(convertToRoman(2900));
+
+
+*/
+
+
+function rot13(str) {
+  let result = '';
+  for (let i = 0; i < str.length; i++) {
+    if (str[i].match(/\w/)) {
+      if (String.fromCharCode(str[i].charCodeAt(0)-13).match(/[A-Z]/)) {
+        result += String.fromCharCode(str[i].charCodeAt(0)-13);
+      }
+      else {
+        result += String.fromCharCode(str[i].charCodeAt(0)+13);
+      }
+    }
+    else {
+      result +=  str[i];
+    }
+  }
+  return result;
+}
+
+console.log(rot13("SERR PBQR PNZC!"));
 
 
