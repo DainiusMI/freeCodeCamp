@@ -45,7 +45,7 @@ Methods are properties that are functions. This adds different behavior to an ob
   };
   duck.sayName();
   ```
-he example adds the sayName method, which is a function that returns a sentence giving the name of the duck. Notice that the method accessed the name property in the return statement using duck.name. The next challenge will cover another way to do this.
+The example adds the sayName method, which is a function that returns a sentence giving the name of the duck. Notice that the method accessed the name property in the return statement using duck.name. The next challenge will cover another way to do this.
 
 
 ### Make Code More Reusable with the this Keyword:
@@ -283,7 +283,7 @@ Just like people inherit genes from their parents, an object inherits its protot
   }
   let duck = new Bird("Donald");
   ```
-  duck inherits its prototype from the Bird constructor function. You can show this relationship with the isPrototypeOf method:
+duck inherits its prototype from the Bird constructor function. You can show this relationship with the isPrototypeOf method:
  ```js
   Bird.prototype.isPrototypeOf(duck);
   ```

@@ -1327,7 +1327,6 @@ function addTogether(x, y) {
 
 console.log(addTogether(1, 4));
 
-*/
 
 const Person = function(firstAndLast) {
   let [firstName, lastName] = firstAndLast.split(' ');
@@ -1356,6 +1355,21 @@ const bob = new Person('Bob Ross');
 //console.log(bob.getFullName());
 bob.setFirstName("Haskell")
 console.log(bob.getFirstName());
+
+
+function orbitalPeriod(arr) {
+  const GM = 398600.4418;
+  const earthRadius = 6367.4447;
+  arr.forEach(element => {
+    element.orbitalPeriod = Math.round(2 * Math.PI * Math.sqrt( Math.pow(element.avgAlt + earthRadius, 3) / GM));
+    delete element.avgAlt;
+  });
+  return arr;
+}
+console.log(orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]));
+
+
+*/
 
 
 
