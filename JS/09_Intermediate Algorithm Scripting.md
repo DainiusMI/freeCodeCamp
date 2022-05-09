@@ -436,6 +436,42 @@ If either argument isn't a valid number, return undefined.
 not like my mess, note how he assigned function arguments: const [first, second] = arguments;
 
 
+### Make a Person:
+Fill in the object constructor with the following methods below:
+  - getFirstName()
+  - getLastName()
+  - getFullName()
+  - setFirstName(first)
+  - setLastName(last)
+  - setFullName(firstAndLast)
+Run the tests to see the expected output for each method. The methods that take an argument must accept only one argument and it has to be a string. These methods must be the only available means of interacting with the object.
+  ```js
+  const Person = function(firstAndLast) {
+    let [firstName, lastName] = firstAndLast.split(' ');
+    this.getFullName = function() {
+      return firstName + ' ' + lastName;
+    };
+    this.setFullName = function(firstAndLast) {
+      [firstName, lastName] = firstAndLast.split(' ');
+    };
+    this.getFirstName = function() {
+      return firstName;
+    }
+    this.setFirstName = function(first) {
+      firstName = first;
+    }
+    this.getLastName = function() {
+      return lastName;
+    }
+    this.setLastName = function(last) {
+      lastName = last;
+    }
+    return firstAndLast;
+  };
+  ```
+The wording of this exercise had me confused for a while and ended up being repetetice key asignments...
+
+
 ### 
 
   ```js

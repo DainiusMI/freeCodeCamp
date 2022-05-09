@@ -1305,7 +1305,7 @@ function addTogether(x, y) {
     return x + y
   } 
 }
-*/
+
 
 function addTogether(x, y) {
   console.log(arguments)
@@ -1326,3 +1326,38 @@ function addTogether(x, y) {
 }
 
 console.log(addTogether(1, 4));
+
+*/
+
+const Person = function(firstAndLast) {
+  let [firstName, lastName] = firstAndLast.split(' ');
+  this.getFullName = function() {
+    return firstName + ' ' + lastName;
+  };
+  this.setFullName = function(firstAndLast) {
+    [firstName, lastName] = firstAndLast.split(' ');
+  };
+  this.getFirstName = function() {
+    return firstName;
+  }
+  this.setFirstName = function(first) {
+    firstName = first;
+  }
+  this.getLastName = function() {
+    return lastName;
+  }
+  this.setLastName = function(last) {
+    lastName = last;
+  }
+  return firstAndLast;
+};
+
+const bob = new Person('Bob Ross');
+//console.log(bob.getFullName());
+bob.setFirstName("Haskell")
+console.log(bob.getFirstName());
+
+
+
+
+
