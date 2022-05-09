@@ -1371,7 +1371,19 @@ console.log(orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]));
 
 */
 
+function palindrome(str) {
+  let arr = [];
+  let result = true;
+  str.toLowerCase().split('').filter(a => a.match(/[a-z0-9]/)?arr.push(a):null);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== arr.reverse()[i])
+      result = false;
+  }
+  return result;
+}
 
-
+console.log(palindrome("_rAce car"));
+//console.log(palindrome("0_0 (: /-\ :) 0-0"))
+//console.log(palindrome("almostomla"))
 
 
