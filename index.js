@@ -1442,6 +1442,77 @@ console.log(rot13("SERR PBQR PNZC!"));
 */
 
 
+function telephoneCheck(str) {
+  let arr = str.split(/\D/).filter(a => a !== '');
+  let digitCount = arr.join('').length;
+
+  // testing values and format bellow
+  for (let i in str) {
+
+    if (!/\d/.test(str[i])) {
+      if (/\(|\-|\)|\s/.test(str[i])) {
+        console.log('not a number but is allowed')
+      }
+      else {
+        console.log(str[i] + ' is not allowed')
+        return false;
+      }
+    }
+
+    // check if it's allowed
+    if (/\(|\-|\)|\s/.test(str[i])) {
+
+      // next 3 values are diggits
+        if (/\-|\s/.test(str[i])) {
+          let n;
+          // account for braket after whitespace
+          /\(/.test(str[+i+1])?n=+i+2:n=+i+1;
+          for (n; n < +i+4; n++) {
+            if (!/\d/.test(str[n])) {
+              console.log('3 in row failed')
+              return false
+            }
+          }
+        }
+
+      // check if brakets are not missing
+        if (/\(/.test(str[i])) {
+          if (str[+i+4] != ')') {
+            console.log('missing braket )')
+            return false
+          }
+        }
+        console.log(str[-i-4])
+        if (/\)/.test(str[i])) {
+          if (str[+i-4] != '(') {
+            console.log('missing braket (')
+            return false
+          }
+        }
+      }
+
+
+
+    // check the length
+    if (9 < digitCount && digitCount < 12) {
+      // look for country code and comfirm it
+      if (digitCount == 11 && arr[0] != 1) {
+        console.log('bad country code')
+        return false;
+      }
+    }
+    else {
+      console.log('to long')
+      return false;
+    }
+  }
+
+return true;
+}
+
+console.log(telephoneCheck("(555)5(55?)-5555"));
+
+
 
 
 
