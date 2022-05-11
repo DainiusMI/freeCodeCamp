@@ -1439,82 +1439,120 @@ function rot13(str) {
 
 console.log(rot13("SERR PBQR PNZC!"));
 
-*/
-
 
 function telephoneCheck(str) {
   let arr = str.split(/\D/).filter(a => a !== '');
   let digitCount = arr.join('').length;
-
-  // testing values and format bellow
-  for (let i in str) {
-
-    if (!/\d/.test(str[i])) {
-      if (/\(|\-|\)|\s/.test(str[i])) {
-        console.log('not a number but is allowed')
-      }
-      else {
-        console.log(str[i] + ' is not allowed')
-        return false;
-      }
-    }
-
-    // check if it's allowed
-    if (/\(|\-|\)|\s/.test(str[i])) {
-
-      // next 3 values are diggits
-        if (/\-|\s/.test(str[i])) {
-          let n;
-          // account for braket after whitespace
-          /\(/.test(str[+i+1])?n=+i+2:n=+i+1;
-          for (n; n < +i+4; n++) {
-            if (!/\d/.test(str[n])) {
-              console.log('3 in row failed')
-              return false
-            }
-          }
-        }
-
-      // check if brakets are not missing
-        if (/\(/.test(str[i])) {
-          if (str[+i+4] != ')') {
-            console.log('missing braket )')
-            return false
-          }
-        }
-        console.log(str[-i-4])
-        if (/\)/.test(str[i])) {
-          if (str[+i-4] != '(') {
-            console.log('missing braket (')
-            return false
-          }
-        }
-      }
-
-
-
-    // check the length
-    if (9 < digitCount && digitCount < 12) {
-      // look for country code and comfirm it
-      if (digitCount == 11 && arr[0] != 1) {
-        console.log('bad country code')
-        return false;
-      }
-    }
-    else {
-      console.log('to long')
+  // check the length
+  if (9 < digitCount && digitCount < 12) {
+    // look for country code and comfirm it
+    if (digitCount == 11 && arr[0] != 1) {
       return false;
     }
   }
-
+  else {
+    return false;
+  }
+  // testing values and format bellow
+  for (let i in str) {
+    // look for not numbers
+    if (!/\d/.test(str[i])) {
+      // look if it's a valid symbol
+      if (/\(|\-|\)|\s/.test(str[i])) {
+          // check if next 3 values are diggits
+          if (/\-|\s/.test(str[i])) {
+            let n;
+            // account for possible whitespace before braket
+            /\(/.test(str[+i+1])?n=+i+2:n=+i+1;
+            for (n; n < +i+4; n++) {
+              if (!/\d/.test(str[n])) {
+                return false
+              }
+            }
+          }
+          // check for missing brakets
+          if (/\(|\)/.test(str[i])) {
+            if (!/\(\d{3}\)/.test(str)) {
+              return false
+            }
+          }
+      }
+      // not allowed symbol
+      else {
+        return false;
+      }
+    }
+  }
 return true;
 }
 
-console.log(telephoneCheck("(555)5(55?)-5555"));
+console.log(telephoneCheck("1 (555) 555-5555"));
+
+*/
 
 
 
+function checkCashRegister(price, cash, cid) {
+  const cashValues = {
+    'ONE HUNDRED': 100,
+    'TWENTY': 20,
+    'TEN': 10,
+    'FIVE': 5,
+    'ONE': 1,
+    'QUARTER': 0.25,
+    'DIME': 0.1,
+    'NICKEL': 0.05,
+    'PENNY': 0.01
+  }
 
+  let change = cash - price;
+  let result = { status: '', change: []};
+  let bank = cid.map(i => i[1]*100).reduce((a,b) => a + b)/100;
+  const origCID = cid.map(i => [i[0], (i[1]*100/100)]);
+  // scroll over object with values
+  for (let i in cashValues) {
+    if (change >= cashValues[i]) {
+      // scroll over cid
+      cid.filter(a => {
+        // find the bill that is necessary
+        if (a[0] == i) {
 
-
+          // look how many bills will you need
+          let n = Math.floor(change / cashValues[i]);
+          // check if you have enough of them
+          while (n * cashValues[i] > a[1]) {
+            n--;
+          }
+          let takeAway = n * cashValues[i];
+          function calcucalte(val) {
+            return (val *1000 - takeAway *1000) /1000;
+          }
+          change = calcucalte(change);
+          bank = calcucalte(bank);
+          a[1] = calcucalte(a[1]);
+          result.change.push([i, takeAway]);
+          //console.log(i + ' times ' + n + ' is '+ takeAway + ' taken out of change is: '+change);
+        }
+      });
+    }
+  }
+  if (change > 0) {
+    result.status = 'INSUFFICIENT_FUNDS';
+    result.change.length = 0;
+  }
+  else {
+    if (bank > 0) 
+      result.status = 'OPEN';
+    else {
+      result.status = 'CLOSED';
+      result.change = origCID;
+    }
+  }
+  console.log(result);
+  return result;
+}
+// ["PENNY", 1.01] means that 1.01 dollars worth of pennies
+//checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
+//checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
+checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])
 
