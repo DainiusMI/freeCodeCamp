@@ -1,16 +1,24 @@
 {
   "name": "01",
   "version": "1.0.0",
-  "description": "",
+  "description": "freeCodeCamp Courses",
   "main": "index.js",
   "scripts": {
     "dev": "live-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "DainiusMI",
   "license": "ISC",
   "devDependencies": {
-    "live-server": "^1.2.1"
-  }
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DainiusMI/freeCodeCamp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DainiusMI/freeCodeCamp/issues"
+  },
+  "homepage": "https://github.com/DainiusMI/freeCodeCamp#readme"
 }
