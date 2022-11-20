@@ -15,4 +15,16 @@ You can add Bootstrap to any app by adding the following code to the top of your
 - btn-block: streches the button to 100% witdh
 - btn-primary
 - btn-info
+- btn-danger
+
+        && Bootstrap uses a responsive 12-column grid system
+
+- col-md-*: Here, md means medium, and * is a number specifying how many columns wide the element should be.
+- col-xs-*: xs means extra small (like an extra-small mobile phone screen), and * is the number of columns specifying how many columns wide the element should be.
+
+- text-primary
+- text-danger
+
+
+- form-control
 
