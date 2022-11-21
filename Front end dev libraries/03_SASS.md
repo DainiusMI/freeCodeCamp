@@ -111,11 +111,10 @@ And just like in JavaScript, @else if and @else test for more conditions:
 }
 ```
 Create a mixin called border-stroke that takes a parameter $val. The mixin should check for the following conditions using @if, @else if, and @else:
-```scss
-light - 1px solid black
-medium - 3px solid black
-heavy - 6px solid black
-```
+- light - 1px solid black
+- medium - 3px solid black
+- heavy - 6px solid black
+
 If $val is not light, medium, or heavy, the border should be set to none.
 ```scss
 @mixin border-stroke($val) {
@@ -177,4 +176,104 @@ It should create 5 classes called .text-1 to .text-5 where each has a font-size 
 ```
 
 
-### 
+### Use @each to Map Over Items in a List:
+
+The last challenge showed how the @for directive uses a starting and ending value to loop a certain number of times. Sass also offers the @each directive which loops over each item in a list or map. On each iteration, the variable gets assigned to the current value from the list or map.
+```scss
+@each $color in blue, red, green {
+  .#{$color}-text {color: $color;}
+}
+```
+A map has slightly different syntax. Here's an example:
+```scss
+$colors: (color1: blue, color2: red, color3: green);
+
+@each $key, $color in $colors {
+  .#{$color}-text {color: $color;}
+}
+```
+        && Note that the $key variable is needed to reference the keys in the map. Otherwise, the compiled CSS would have color1, color2... in it. Both of the above code examples are converted into the following CSS:
+```scss
+.blue-text {
+  color: blue;
+}
+
+.red-text {
+  color: red;
+}
+
+.green-text {
+  color: green;
+}
+```
+Write an @each directive that goes through a list: blue, black, red and assigns each variable to a .color-bg class, where the color part changes for each item. Each class should set the background-color the respective color.
+```scss
+@each $color in blue, black, red {
+  .#{$color}-bg {
+    background-color:$color;
+  }
+}
+```
+
+
+### Apply a Style Until a Condition is Met with @while:
+The @while directive is an option with similar functionality to the JavaScript while loop. It creates CSS rules until a condition is met.
+
+The @for challenge gave an example to create a simple grid system. This can also work with @while.
+```scss
+$x: 1;
+@while $x < 13 {
+  .col-#{$x} { width: 100%/12 * $x;}
+  $x: $x + 1;
+}
+```
+First, define a variable $x and set it to 1. Next, use the @while directive to create the grid system while $x is less than 13. After setting the CSS rule for width, $x is incremented by 1 to avoid an infinite loop.
+
+Use @while to create a series of classes with different font-sizes.
+```scss
+$i:1;
+@while $i < 7 {
+  .text-#{$i} {
+    font-size: $i * 15px;
+  }
+  $i: $i + 1;
+}
+```
+There should be 5 different classes from text-1 to text-5. Then set font-size to 15px multiplied by the current index number. Make sure to avoid an infinite loop!
+
+
+### Split Your Styles into Smaller Chunks with Partials:
+
+Partials in Sass are separate files that hold segments of CSS code. These are imported and used in other Sass files. This is a great way to group similar code into a module to keep it organized.
+
+Names for partials start with the underscore (_) character, which tells Sass it is a small segment of CSS and not to convert it into a CSS file. Also, Sass files end with the .scss file extension. To bring the code in the partial into another Sass file, use the @import directive.
+
+For example, if all your mixins are saved in a partial named "_mixins.scss", and they are needed in the "main.scss" file, this is how to use them in the main file:
+```scss
+@import 'mixins'
+```
+        && Note that the underscore and file extension are not needed in the import statement - Sass understands it is a partial. Once a partial is imported into a file, all variables, mixins, and other code are available to use.
+
+
+### Extend One Set of CSS Styles to Another Element:
+
+Sass has a feature called extend that makes it easy to borrow the CSS rules from one element and build upon them in another.
+
+For example, the below block of CSS rules style a .panel class. It has a background-color, height and border.
+```scss
+.panel{
+  background-color: red;
+  height: 70px;
+  border: 2px solid green;
+}
+```
+Now you want another panel called .big-panel. It has the same base properties as .panel, but also needs a width and font-size. It's possible to copy and paste the initial CSS rules from .panel, but the code becomes repetitive as you add more types of panels. The extend directive is a simple way to reuse the rules written for one element, then add more for another:
+```scss
+.big-panel{
+  @extend .panel;
+  width: 150px;
+  font-size: 2em;
+}
+```
+The .big-panel will have the same properties as .panel in addition to the new styles.
+

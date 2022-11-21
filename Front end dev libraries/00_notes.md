@@ -106,9 +106,38 @@ SASS accepts:
   }
 }
 ```
-- for loops: @for is used in two ways: "start through end" or "start to end". The main difference is that the "start to end" excludes the end number as part of the count, and "start through end" includes the end number as part of the count.
+- @for loops: @for is used in two ways: "start through end" or "start to end". The main difference is that the "start to end" excludes the end number as part of the count, and "start through end" includes the end number as part of the count.
 ```scss
 @for $i from 1 through 12 {
   .col-#{$i} { width: 100%/12 * $i; }
 }
 ```
+        && Note that #{}  turns #{$i} into a string with the value of $i
+
+- @each directive which loops over each item in a list or map
+```scss
+@each $color in blue, red, green {
+  .#{$color}-text {color: $color;}
+}
+
+$colors: (color1: blue, color2: red, color3: green);
+@each $key, $color in $colors {
+  .#{$color}-text {color: $color;}
+}
+```
+first example was a list second a map
+
+- @while directive is an option with similar functionality to the JavaScript while loop.
+```scss
+$i:1;
+@while $i < 7 {
+  .text-#{$i} {
+    font-size: $i * 15px;
+  }
+  $i: $i + 1;
+}
+```
+
+
+## REACT
+
