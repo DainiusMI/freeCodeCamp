@@ -136,3 +136,126 @@ Here's how you would disable all buttons:
 $("button").prop("disabled", true);
 ```
 Disable only the target1 button.
+
+
+### Change Text Inside an Element Using jQuery:
+
+Using jQuery, you can change the text between the start and end tags of an element. You can even change HTML markup.
+
+jQuery has a function called .html() that lets you add HTML tags and text within an element. Any content previously within the element will be completely replaced with the content you provide using this function.
+
+Here's how you would rewrite and emphasize the text of our heading:
+```js
+$("h3").html("<em>jQuery Playground</em>");
+```
+jQuery also has a similar function called .text() that only alters text without adding tags. In other words, this function will not evaluate any HTML tags passed to it, but will instead treat it as the text you want to replace the existing content with.
+
+Change the button with id target4 by emphasizing its text.
+
+View our news article for <em> to learn the difference between <i> and <em> and their uses.
+        https://www.freecodecamp.org/news/html-elements-explained-what-are-html-tags/#em-element
+
+        && Note that while the <i> tag has traditionally been used to emphasize text, it has since been adopted for use as a tag for icons. The <em> tag is now widely accepted as the tag for emphasis. Either will work for this challenge.
+
+
+### Remove an Element Using jQuery:
+
+Now let's remove an HTML element from your page using jQuery.
+
+jQuery has a function called .remove() that will remove an HTML element entirely
+
+Remove the #target4 element from the page by using the .remove() function.
+
+
+### Use appendTo to Move Elements with jQuery:
+
+Now let's try moving elements from one div to another.
+
+jQuery has a function called appendTo() that allows you to select HTML elements and append them to another element.
+
+For example, if we wanted to move target4 from our right well to our left well, we would use:
+```js 
+$("#target4").appendTo("#left-well");
+```
+Move your target2 element from your left-well to your right-well.
+
+
+### Clone an Element Using jQuery:
+
+In addition to moving elements, you can also copy them from one place to another.
+
+jQuery has a function called clone() that makes a copy of an element.
+
+For example, if we wanted to copy target2 from our left-well to our right-well, we would use:
+```js
+$("#target2").clone().appendTo("#right-well");
+```
+Did you notice this involves sticking two jQuery functions together? This is called function chaining and it's a convenient way to get things done with jQuery.
+
+Clone your target5 element and append it to your left-well.
+
+
+### Target the Parent of an Element Using jQuery:
+
+Every HTML element has a parent element from which it inherits properties.
+
+For example, your jQuery Playground h3 element has the parent element of <div class="container-fluid">, which itself has the parent body.
+
+jQuery has a function called parent() that allows you to access the parent of whichever element you've selected.
+
+Here's an example of how you would use the parent() function if you wanted to give the parent element of the left-well element a background color of blue:
+```js 
+$("#left-well").parent().css("background-color", "blue")
+```
+Give the parent of the #target1 element a background-color of red.
+
+
+### Target the Children of an Element Using jQuery:
+
+When HTML elements are placed one level below another they are called children of that element. For example, the button elements in this challenge with the text #target1, #target2, and #target3 are all children of the <div class="well" id="left-well"> element.
+
+jQuery has a function called children() that allows you to access the children of whichever element you've selected.
+
+Here's an example of how you would use the children() function to give the children of your left-well element the color blue:
+```js
+$("#left-well").children().css("color", "blue")
+```
+Give all the children of your right-well element the color orange.
+
+
+### Target a Specific Child of an Element Using jQuery:
+
+You've seen why id attributes are so convenient for targeting with jQuery selectors. But you won't always have such neat ids to work with.
+
+Fortunately, jQuery has some other tricks for targeting the right elements.
+
+jQuery uses CSS Selectors to target elements. The target:nth-child(n) CSS selector allows you to select all the nth elements with the target class or element type.
+
+Here's how you would give the third element in each well the bounce class:
+```jss
+$(".target:nth-child(3)").addClass("animated bounce");
+```
+Make the second child in each of your well elements bounce. You must select the elements' children with the target class.
+
+
+### Target Even Elements Using jQuery:
+
+You can also target elements based on their positions using :odd or :even selectors.
+
+        && Note that jQuery is zero-indexed which means the first element in a selection has a position of 0. This can be a little confusing as, counter-intuitively, :odd selects the second element (position 1), fourth element (position 3), and so on.
+
+Here's how you would target all the odd elements with class target and give them classes:
+```js
+$(".target:odd").addClass("animated shake");
+```
+Try selecting all the even target elements and giving them the classes of animated and shake. Remember that even refers to the position of elements with a zero-based system in mind.
+
+### Use jQuery to Modify the Entire Page:
+
+We're done playing with our jQuery playground. Let's tear it down!
+
+jQuery can target the body element as well.
+
+Here's how we would make the entire body fade out: $("body").addClass("animated fadeOut");
+
+But let's do something more dramatic. Add the classes animated and hinge to your body element.

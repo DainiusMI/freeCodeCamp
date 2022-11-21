@@ -60,3 +60,28 @@ Enable or Disable html elements:
 ```js
 $("button").prop("disabled", true);
 ```
+
+Manipulate html elements:
+- .html() lets you add HTML tags and text within an element.
+- .text() only alters text without adding tags.
+- .remove() will remove an HTML element entirely
+- .appendTo() allows you to select HTML elements and append them to another element.
+- .clone() makes a copy of an element.
+```js
+$("#target2").clone().appendTo("#right-well");
+```
+- .parent() allows you to access the parent of whichever element you've selected.
+```js 
+$("#left-well").parent().css("background-color", "blue")
+```
+- .children() that allows you to access the children of whichever element you've selected.
+- target:nth-child(n) CSS selector allows you to select all the nth elements with the target class or element type.
+```js
+$(".target:nth-child(3)").addClass("animated bounce");
+```
+- ":odd" and ":even" target elements based on their positions
+```js 
+$(".target:odd").addClass("animated shake");
+```
+        && Note that jQuery is zero-indexed which means the first element in a selection has a position of 0. This can be a little confusing as, counter-intuitively, :odd selects the second element (position 1), fourth element (position 3), and so on.
+-  
