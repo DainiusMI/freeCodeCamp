@@ -84,4 +84,31 @@ $(".target:nth-child(3)").addClass("animated bounce");
 $(".target:odd").addClass("animated shake");
 ```
         && Note that jQuery is zero-indexed which means the first element in a selection has a position of 0. This can be a little confusing as, counter-intuitively, :odd selects the second element (position 1), fourth element (position 3), and so on.
--  
+
+
+## SASS
+
+SASS accepts:
+- if conditions:
+```scss
+@mixin border-stroke($val) {
+  @if $val == light {
+    border : 1px solid black;
+  }
+  @else if $val == medium {
+    border : 3px solid black;
+  }
+  @else if $val == heavy {
+    border: 6px solid black;
+  }
+  @else {
+    border: none;
+  }
+}
+```
+- for loops: @for is used in two ways: "start through end" or "start to end". The main difference is that the "start to end" excludes the end number as part of the count, and "start through end" includes the end number as part of the count.
+```scss
+@for $i from 1 through 12 {
+  .col-#{$i} { width: 100%/12 * $i; }
+}
+```
