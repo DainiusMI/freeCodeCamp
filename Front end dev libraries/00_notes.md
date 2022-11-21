@@ -28,3 +28,35 @@ You can add Bootstrap to any app by adding the following code to the top of your
 
 - form-control
 
+## jQuery
+
+Before we can start using jQuery, we need to add some things to our HTML.
+
+```js
+    <script>
+        $(document).ready(function() {
+            
+        });
+    </script>
+```
+
+Target html elements with:
+- $("element-tag")
+- $(".class-name")
+- $("#id-name")
+
+You can add remove classes:
+```js
+$("#target6").addClass("animated fadeOut");
+$("#target2").removeClass("btn-default");
+```
+
+Change the targets CSS
+```js 
+$("#target1").css("color", "blue");
+```
+
+Enable or Disable html elements:
+```js
+$("button").prop("disabled", true);
+```
