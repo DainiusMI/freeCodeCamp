@@ -203,6 +203,24 @@ return (
 ```
 When React encounters a custom HTML tag that references another component (a component name wrapped in < /> like in this example), it renders the markup for that component in the location of the tag.
 
+React components are passed into ReactDOM.render() a little differently than JSX elements. For JSX elements, you pass in the name of the element that you want to render. However, for React components, you need to use the same syntax as if you were rendering a nested component, for example ReactDOM.render(<ComponentToRender />, targetNode). You use this syntax for both ES6 class components and functional components.
+
+React also has an option to set default props.
+For example, if you declare MyComponent.defaultProps = { location: 'San Francisco' }, you have defined a location prop that's set to the string San Francisco, unless you specify otherwise.
+
+The way to override the default props is to explicitly set the prop values for a component.
+Remember that the syntax to add a prop to a component looks similar to how you add HTML attributes. 
+```jsx
+return <Items quantity={10}/>
+```
+
+    && 10 is in curly braces because it needs to be integer if you needed a string you would put it quates.
+
+React provides useful type-checking features to verify that components receive props of the correct type.
+
+    && && Note: As of React v15.5.0, PropTypes is imported independently from React, like this: import PropTypes from 'prop-types';
+
+
 
 
 
