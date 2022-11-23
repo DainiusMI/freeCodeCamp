@@ -217,6 +217,10 @@ return <Items quantity={10}/>
     && 10 is in curly braces because it needs to be integer if you needed a string you would put it quates.
 
 React provides useful type-checking features to verify that components receive props of the correct type.
+```jsx
+Items.propTypes = {quantity : PropTypes.number.isRequired}
+```
+quantity is a property name
 
     && && Note: As of React v15.5.0, PropTypes is imported independently from React, like this: import PropTypes from 'prop-types';
 
