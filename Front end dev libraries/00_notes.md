@@ -261,6 +261,7 @@ this.setState((state, props) => ({
 }));
 ```
 
+    && Note: You also must call event.preventDefault() in the submit handler, to prevent the default form submit behavior which will refresh the web page. 
 
 
 
