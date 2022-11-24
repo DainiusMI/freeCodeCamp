@@ -322,39 +322,19 @@ A common practice when working with Redux is to assign action types as read-only
     && Note: It's generally a convention to write constants in all uppercase, and this is standard practice in Redux as well.
 
 Another method you have access to on the Redux store object is store.subscribe(). This allows you to subscribe listener functions to the store,
+
+Redux provides reducer composition as a solution for a complex state model. You define multiple reducers to handle different pieces of your application's state, then compose these reducers together into one root reducer. The root reducer is then passed into the Redux createStore() method.
+n order to let us combine multiple reducers together, Redux provides the combineReducers() method. This method accepts an object as an argument in which you define properties which associate keys to specific reducer functions. The name you give to the keys will be used by Redux as the name for the associated piece of state.
+Typically, it is a good practice to create a reducer for each piece of application state when they are distinct or unique in some way.
 ```js
-const ADD = 'ADD';
-
-const reducer = (state = 0, action) => {
-  switch(action.type) {
-    case ADD:
-      return state + 1;
-    default:
-      return state;
-  }
-};
-
-const store = Redux.createStore(reducer);
-
-// Global count variable:
-let count = 0;
-
-// Change code below this line
-store.subscribe(() => {
-  count++
-})
-// Change code above this line
-
-store.dispatch({type: ADD});
-console.log(count);
-store.dispatch({type: ADD});
-console.log(count);
-store.dispatch({type: ADD});
-console.log(count);
+const rootReducer = Redux.combineReducers({
+  auth: authenticationReducer,
+  notes: notesReducer
+});
 ```
 
 
-### 
+
 
 
 
