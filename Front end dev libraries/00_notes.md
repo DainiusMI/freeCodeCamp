@@ -267,6 +267,48 @@ React components have several special methods that provide opportunities to perf
 Here is a list of some of the main lifecycle methods: componentWillMount() componentDidMount() shouldComponentUpdate() componentDidUpdate() componentWillUnmount()
 
 
+### Redux
+
+Redux is a state management framework that can be used with a number of different web technologies, including React. 
+
+In Redux, there is a single state object that's responsible for the entire state of your application. This means if you had a React app with ten components, and each component had its own local state, the entire state of your app would be defined by a single state object housed in the Redux store.
+
+This also means that any time any piece of your app wants to update state, it must do so through the Redux store. The unidirectional data flow makes it easier to track state management in your app.
+
+The Redux store is an object which holds and manages application state. There is a method called createStore() on the Redux object, which you use to create the Redux store. This method takes a reducer function as a required argument.
+```js
+const reducer = (state = 5) => {
+  return state;
+}
+const store= Redux.createStore(reducer);
+```
+The Redux store object provides several methods that allow you to interact with it. For example, you can retrieve the current state held in the Redux store object with the getState() method.
+```js
+const store = Redux.createStore(
+  (state = 5) => state
+);
+const currentState = store.getState();
+```
+In Redux, all state updates are triggered by dispatching actions. An action is simply a JavaScript object that contains information about an action event that has occurred. 
+Sometimes a Redux action also carries some data. For example, the action carries a username after a user logs in. While the data is optional, actions must carry a type property that specifies the 'type' of action that occurred.
+Writing a Redux action is as simple as declaring an object with a type property. 
+```js
+const action = {
+  type: "LOGIN"
+}
+```
+After creating an action, the next step is sending the action to the Redux store so it can update its state. 
+An action creator is simply a JavaScript function that returns an action. In other words, action creators create objects that represent action events.
+```js
+const action = {
+  type: 'LOGIN'
+}
+function actionCreator() {
+  return action
+}
+```
+
+
 
 
 
