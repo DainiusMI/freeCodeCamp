@@ -307,7 +307,54 @@ function actionCreator() {
   return action
 }
 ```
+dispatch method is what you use to dispatch actions to the Redux store. Calling store.dispatch() and passing the value returned from an action creator sends an action back to the store.
+Based on the previous challenge's example, the following lines are equivalent, and both dispatch the action of type LOGIN:
+```js
+store.dispatch(actionCreator());
+store.dispatch({ type: 'LOGIN' });
+```
+After an action is created and dispatched, the Redux store needs to know how to respond to that action. This is the job of a reducer function. 
+Reducers in Redux are responsible for the state modifications that take place in response to actions. A reducer takes state and action as arguments, and it always returns a new state. 
+Another key principle in Redux is that state is read-only. In other words, the reducer function must always return a new copy of state and never modify state directly. 
 
+A common practice when working with Redux is to assign action types as read-only constants, then reference these constants wherever they are used. You can refactor the code you're working with to write the action types as const declarations.
+
+    && Note: It's generally a convention to write constants in all uppercase, and this is standard practice in Redux as well.
+
+Another method you have access to on the Redux store object is store.subscribe(). This allows you to subscribe listener functions to the store,
+```js
+const ADD = 'ADD';
+
+const reducer = (state = 0, action) => {
+  switch(action.type) {
+    case ADD:
+      return state + 1;
+    default:
+      return state;
+  }
+};
+
+const store = Redux.createStore(reducer);
+
+// Global count variable:
+let count = 0;
+
+// Change code below this line
+store.subscribe(() => {
+  count++
+})
+// Change code above this line
+
+store.dispatch({type: ADD});
+console.log(count);
+store.dispatch({type: ADD});
+console.log(count);
+store.dispatch({type: ADD});
+console.log(count);
+```
+
+
+### 
 
 
 
