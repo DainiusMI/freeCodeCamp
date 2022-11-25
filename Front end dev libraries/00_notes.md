@@ -355,6 +355,36 @@ const rootReducer = Redux.combineReducers({
 </Provider>
 ```
 
+if you're working with npm and a file system on your own machine. The code should look similar, except for the use of import statements (these pull in all of the dependencies that have been provided for you in the challenges). The "Managing Packages with npm" section covers npm in more detail.
+```jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider, connect } from 'react-redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+
+import rootReducer from './redux/reducers'
+import App from './components/App'
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk)
+);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App/>
+  </Provider>,
+  document.getElementById('root')
+);
+```
+Finally, writing React and Redux code generally requires some configuration. This can get complicated quickly. If you are interested in experimenting on your own machine, the Create React App comes configured and ready to go.
+
+      https://www.freecodecamp.org/news/install-react-with-create-react-app/
+
+Alternatively, you can enable Babel as a JavaScript Preprocessor in CodePen, add React and ReactDOM as external JavaScript resources, and work there as well.
+
+
  
 
 
